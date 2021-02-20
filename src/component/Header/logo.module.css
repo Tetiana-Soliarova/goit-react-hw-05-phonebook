@@ -1,0 +1,26 @@
+.title{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+    color: rgb(8, 8, 187);
+    font-size: 65px;
+    text-align: center;
+    
+}
+.header{
+    width: 100%;
+    background-color: white;
+}
+/*.logo{
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.925),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(28, 3, 51, 0.12);
+}
+.enter{
+ 
+  transform: translateX(-100%);
+} 
+.enterActive{
+    
+    transform: translateX(0);
+  transition: transform 500ms linear;
+}*/
