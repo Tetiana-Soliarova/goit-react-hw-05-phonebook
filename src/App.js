@@ -23,6 +23,8 @@ class App extends Component {
     error: false,
   }
 
+  
+
   addContact = (data) => {
     const contact = {
       id: uuidv4(),
@@ -48,12 +50,16 @@ class App extends Component {
 
   changeFilter = (e) => {
     this.setState({ filter: e.currentTarget.value })
+    
+    
   }
 
   visibleTodos = () => {
     return this.state.contacts.filter((contact) =>
       contact.name.toLowerCase().includes(this.state.filter.toLowerCase()),
     )
+    
+
   }
 
   deleteContact = (removeId) => {
@@ -63,7 +69,8 @@ class App extends Component {
       }
     })
   }
-  componentDidMount() {
+
+componentDidMount() {
     const contacts = localStorage.getItem('contacts')
     const parsedContacts = JSON.parse(contacts)
     if (parsedContacts) {
@@ -77,8 +84,21 @@ class App extends Component {
     localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
   }
 
+/*
+  filterD = () => {
+    if (this.state.contacts.length >1) {
+     return {Filter}
+    }
+    if (this.state.contacts.length = " " ) {
+   
+      this.setState({ filter: '' })
+    }
+  }*/
+
+
+
   render() {
-    const { filter } = this.state
+    const { filter, contacts } = this.state
     return (
       <div className={style.color}>
         <CSSTransition
@@ -94,23 +114,24 @@ class App extends Component {
         <div>
           <ContactForm
             onSubmit={this.addContact}
-            contacts={this.state.contacts}
+            contacts={contacts}
           />
 
           <CSSTransition
-            in={this.state.contacts.length >= 2}
+            in={contacts.length > 1}
           timeout={250}
           classNames={filterFade}
           unmountOnExit>
             <Filter value={filter} onChange={this.changeFilter} />
+          
           </CSSTransition>
           
-          
-
+  
           <ContactList
             contacts={this.visibleTodos()}
             deleteContact={this.deleteContact}
           />
+         
         </div>
       </div>
     )
